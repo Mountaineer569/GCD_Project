@@ -1,0 +1,138 @@
+---
+title: "Codebook"
+author: "Mountaineer569"
+date: "September 27, 2015"
+output: html_document
+---
+Code book for the variables in the xdata2 data table, which only contains selected variables from the master data table xdata that contain a mean or standard deviation.  The values in xdata2 are the means of the original values.
+
+The following description is from the data authors.
+==================================================
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details. 
+
+For each record it is provided:
+
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment.
+===========================================
+
+The variable names have been enchanced for user readability.  
+The variable names contain many abbreviations, so we need variable names that are more readable to the user.  Also, we need to clean up the variable names from the results of the valid_name function that was run earlier because the valid_name function replaces invalid text with a ".".  Therefore, excess periods may need to be removed from the variable names.  This is simply a search-and-replace task using the gsub function.
+
+*	Replace triple and double periods (".", "..") with single periods (".").
+*	Replace prefix "t" with "time".
+*	Replace prefix "f" with "FFT", which is Fast Fourier Transformation.
+*	Replace "Acc" with "Accerelation".
+*	Replace "Mag" with "Magnitude".
+*	Replace "Gyr" with "Gyroscope".
+
+Columns in averages_data:
+
+ [1] "timeBodyAccerelation.mean."                   
+ [2] "timeBodyAccerelation.mean."                   
+ [3] "timeBodyAccerelation.mean."                   
+ [4] "timeGravityAccerelation.mean."                
+ [5] "timeGravityAccerelation.mean."                
+ [6] "timeGravityAccerelation.mean."                
+ [7] "timeBodyAccerelationJerk.mean."               
+ [8] "timeBodyAccerelationJerk.mean."               
+ [9] "timeBodyAccerelationJerk.mean."               
+[10] "timeBodyGryoscope.mean."                      
+[11] "timeBodyGryoscope.mean."                      
+[12] "timeBodyGryoscope.mean."                      
+[13] "timeBodyGryoscopeJerk.mean."                  
+[14] "timeBodyGryoscopeJerk.mean."                  
+[15] "timeBodyGryoscopeJerk.mean."                  
+[16] "timeBodyAccerelationMagnitude.mean."          
+[17] "timeGravityAccerelationMagnitude.mean."       
+[18] "timeBodyAccerelationJerkMagnitude.mean."      
+[19] "timeBodyGryoscopeMagnitude.mean."             
+[20] "timeBodyGryoscopeJerkMagnitude.mean."         
+[21] "FFTBodyAccerelation.mean."                    
+[22] "FFTBodyAccerelation.mean."                    
+[23] "FFTBodyAccerelation.mean."                    
+[24] "FFTBodyAccerelation.mean....X"                
+[25] "FFTBodyAccerelation.mean....Y"                
+[26] "FFTBodyAccerelation.mean....Z"                
+[27] "FFTBodyAccerelationJerk.mean."                
+[28] "FFTBodyAccerelationJerk.mean."                
+[29] "FFTBodyAccerelationJerk.mean."                
+[30] "FFTBodyAccerelationJerk.mean....X"            
+[31] "FFTBodyAccerelationJerk.mean....Y"            
+[32] "FFTBodyAccerelationJerk.mean....Z"            
+[33] "FFTBodyGryoscope.mean."                       
+[34] "FFTBodyGryoscope.mean."                       
+[35] "FFTBodyGryoscope.mean."                       
+[36] "FFTBodyGryoscope.mean....X"                   
+[37] "FFTBodyGryoscope.mean....Y"                   
+[38] "FFTBodyGryoscope.mean....Z"                   
+[39] "FFTBodyAccerelationMagnitude.mean."           
+[40] "FFTBodyAccerelationMagnitude.mean..."         
+[41] "FFTBodyBodyAccerelationJerkMagnitude.mean."   
+[42] "FFTBodyBodyAccerelationJerkMagnitude.mean..." 
+[43] "FFTBodyBodyGryoscopeMagnitude.mean."          
+[44] "FFTBodyBodyGryoscopeMagnitude.mean..."        
+[45] "FFTBodyBodyGryoscopeJerkMagnitude.mean."      
+[46] "FFTBodyBodyGryoscopeJerkMagnitude.mean..."    
+[47] "angle.tBodyAccerelationMean.gravity."         
+[48] "angle.tBodyAccerelationJerkMean..gravityMean."
+[49] "angle.tBodyGryoscopeMean.gravityMean."        
+[50] "angle.tBodyGryoscopeJerkMean.gravityMean."    
+[51] "angle.X.gravityMean."                         
+[52] "angle.Y.gravityMean."                         
+[53] "angle.Z.gravityMean."                         
+[54] "timeBodyAccerelation.std."                    
+[55] "timeBodyAccerelation.std."                    
+[56] "timeBodyAccerelation.std."                    
+[57] "timeGravityAccerelation.std."                 
+[58] "timeGravityAccerelation.std."                 
+[59] "timeGravityAccerelation.std."                 
+[60] "timeBodyAccerelationJerk.std."                
+[61] "timeBodyAccerelationJerk.std."                
+[62] "timeBodyAccerelationJerk.std."                
+[63] "timeBodyGryoscope.std."                       
+[64] "timeBodyGryoscope.std."                       
+[65] "timeBodyGryoscope.std."                       
+[66] "timeBodyGryoscopeJerk.std."                   
+[67] "timeBodyGryoscopeJerk.std."                   
+[68] "timeBodyGryoscopeJerk.std."                   
+[69] "timeBodyAccerelationMagnitude.std."           
+[70] "timeGravityAccerelationMagnitude.std."        
+[71] "timeBodyAccerelationJerkMagnitude.std."       
+[72] "timeBodyGryoscopeMagnitude.std."              
+[73] "timeBodyGryoscopeJerkMagnitude.std."          
+[74] "FFTBodyAccerelation.std."                     
+[75] "FFTBodyAccerelation.std."                     
+[76] "FFTBodyAccerelation.std."                     
+[77] "FFTBodyAccerelationJerk.std."                 
+[78] "FFTBodyAccerelationJerk.std."                 
+[79] "FFTBodyAccerelationJerk.std."                 
+[80] "FFTBodyGryoscope.std."                        
+[81] "FFTBodyGryoscope.std."                        
+[82] "FFTBodyGryoscope.std."                        
+[83] "FFTBodyAccerelationMagnitude.std."            
+[84] "FFTBodyBodyAccerelationJerkMagnitude.std."    
+[85] "FFTBodyBodyGryoscopeMagnitude.std."           
+[86] "FFTBodyBodyGryoscopeJerkMagnitude.std."       
+[87] "Subject"                                      
+[88] "Activity"                  
+
+   Activity
+   
+1. WALKING
+2. WALKING_UPSTAIRS
+3. WALKING_DOWNSTAIRS
+4. SITTING
+5. STANDING
+6. LAYING
+
+
+library('dplyr')
+averages_data <- ddply(xdata2, .(Subject, Activity), function(x) colMeans(x[,1:86]))
+str(averages_data)
+
